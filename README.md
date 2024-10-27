@@ -31,10 +31,7 @@ const uri = "YOUR URI";
 ## Screenshots:
 
 ### Main Page:
-![Alt text]()
-
-### Product Page:
-![Alt text]()
+![Alt text](https://raw.githubusercontent.com/Azharkoivila/NodeJs-Express-Shopping-car/refs/heads/master/screenshots/Screenshot%20from%202024-10-27%2021-33-34.png)
 
 ## How can I support the developer ?
 
