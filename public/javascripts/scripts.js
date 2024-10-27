@@ -3,11 +3,11 @@ history.pushState(null, "", location.href.split("?")[0]);
 //jquary image Validation
 $(document).ready(function () {
   $("#productImage").on("change", function () {
-    var files = $(this)[0].files;
+    let files = $(this)[0].files;
     $("#preview-container").empty();
     if (files.length > 0) {
-      for (var i = 0; i < files.length; i++) {
-        var reader = new FileReader();
+      for (let i = 0; i < files.length; i++) {
+        let reader = new FileReader();
         reader.onload = function (e) {
           $(
             "<div class='preview'><img src='" +
@@ -26,9 +26,9 @@ $(document).ready(function () {
 });
 
 //splide mounter
-var elms = document.getElementsByClassName("splide");
+let elms = document.getElementsByClassName("splide");
 
-for (var i = 0; i < elms.length; i++) {
+for (let i = 0; i < elms.length; i++) {
   new Splide(elms[i], {
     type: "loop",
     autoplay: "true",

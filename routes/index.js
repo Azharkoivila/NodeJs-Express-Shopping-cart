@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
 const productFunctions = require("../helpers/db-functions");
 const dbFunctions = require("../helpers/db-functions");
 const functionHelpers = require("../helpers/function-helpers");

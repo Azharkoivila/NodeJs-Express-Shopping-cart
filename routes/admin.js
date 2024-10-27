@@ -1,11 +1,11 @@
-var express = require("express");
-var router = express.Router();
-var dbFunctions = require("../helpers/db-functions");
-var functionHelpers=require('../helpers/function-helpers')
+const express = require("express");
+const router = express.Router();
+const dbFunctions = require("../helpers/db-functions");
+const functionHelpers=require('../helpers/function-helpers')
 const hbsHelpers = require("../helpers/hbs-custom-helpers");
 
 const isAdminExist=(req,res,next)=>{
-  var ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress; 
+  const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress; 
   console.log(ip)
   dbFunctions.getAdmin().then((result)=>{
     if(!result){
@@ -67,16 +67,18 @@ router.get("/", isAdminExist,function (req, res, next) {
 });
 
 router.get("/addProducts", (req, res, next) => {
-  res.render("add-Product", { admin: true, });
+  let user = req.session.admin.name;
+  res.render("add-Product", { admin: true, user});
 });
 
 
 router.post("/addProducts", (req, res, next) => {
+  let user = req.session.admin.name;
   const body = Object.assign({}, req.body);
   const image = req.files.file;
   functionHelpers.imageMove(image).then((result)=>{
     dbFunctions.createProduct(body,result);
-    res.render("add-Product", { admin: true, status: true });
+    res.render("add-Product", { admin: true, status: true,user });
   })  
 });
 
@@ -100,9 +102,10 @@ router.get("/delete-product/:id", (req, res) => {
 
 
 router.get("/update-product/:id", (req, res) => {
+  let user = req.session.admin.name;
   const proId = req.params.id;
   dbFunctions.getProduct(proId).then((result)=>{
-     res.render("update-product", { admin: true,result });
+     res.render("update-product", { admin: true,result ,user});
   })
 
 
