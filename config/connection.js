@@ -14,7 +14,7 @@ let obj={
 let connection = async function () {
   try {
     await client.connect();
-    console.log("DB Connection Succsfull");
+    console.log("DB Connection Successful");
     const database = client.db(collections.DbName);
 
     if(database){
