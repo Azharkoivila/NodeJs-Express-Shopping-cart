@@ -1,0 +1,51 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Image</th>
+      <th scope="col">Name</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    {{#each products}}
+    <tr>
+      <th scope="row">{{indexIncrement @index}}</th>
+      <td>
+        <img class="adminList" src="/images/products/{{this.imgPaths.[0]}}.jpg" alt="{{this}}">
+      </td>
+      <td>{{this.productName}}</td>
+      <td>{{this.productBrand}}</td>
+      <td>
+       <a type="button" href="/admin/update-product/{{this._id}}" class="btn btn-success">Update</a>
+        <a type="button" href="/admin/delete-product-conform/{{this._id}}" onclick="conform()" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+ {{#ifCond val1 "||" val2 }}
+<section>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{val1}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       {{val1}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        {{#if val2}}
+        <a type="button" href="/admin/delete-product/{{val2}}" onclick="conform()" class="btn btn-danger">Delete</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{{/ifCond}}

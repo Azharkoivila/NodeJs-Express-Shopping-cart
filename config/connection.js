@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-
+const collections=require('./collections')
 
 const uri = "mongodb://127.0.0.1:27017/";
 
@@ -14,8 +14,8 @@ let obj={
 let connection = async function () {
   try {
     await client.connect();
-    console.log("connection Succsfull");
-    const database = client.db("shopping");
+    console.log("DB Connection Succsfull");
+    const database = client.db(collections.DbName);
 
     if(database){
         obj.db=database
@@ -27,8 +27,7 @@ let connection = async function () {
   } catch (e) {
     console.log("failed" + e);
   } finally {
-    // Ensures that the client will close when you finish/error
-    // await client.close();
+
   }
 };
 

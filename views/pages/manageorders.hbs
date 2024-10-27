@@ -1,0 +1,28 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Date</th>
+       <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Status</th>
+      <th scope="col">VIew Product</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each result}}
+      {{#each this.userOrders}}
+      {{#each this.userCart}}
+        <tr>
+      <th scope="row">{{incrementor @index}}</th>
+     <td>{{../time}}</td>
+     <td>{{this.count}}</td>
+      <td>{{this.productPrice}}</td>
+       <td>{{../status}}</td>
+      <td><a href="/viewProduct/{{this.productId}}" type="button" class="btn btn-primary">view Product</a></td>
+       </tr>
+       {{/each}}
+    {{/each}}
+    {{/each}}
+  </tbody>
+</table>

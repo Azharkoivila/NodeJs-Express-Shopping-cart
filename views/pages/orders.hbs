@@ -1,0 +1,48 @@
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .order-card {
+            margin: 20px 0;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .order-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center my-4">My Orders</h1>
+    <div class="row">
+        <div class="col-md-12">
+              {{#each result.userOrders}}
+                 {{#each this.userCart}}
+            <div class="order-card">
+                <div class="order-header">
+                    <h5>Order #{{incrementor @index}}</h5>
+                </div>
+               
+                <div class="card-body">
+                    <p><strong>Date:</strong><td>{{../time}}</td></p>
+                    <p><strong>Status:</strong>{{../status}}</p>
+                    <p><strong>Amount:</strong>RS {{this.productPrice}}</p>
+                    <p><strong>Quantity:</strong>Nos {{this.count}}</p>
+                    <p><strong>Total:</strong>RS {{amountMul this.productPrice this.count}}</p>
+                    <a href="/viewProduct/{{this.productId}}" type="button" class="btn btn-primary">View Details</a>
+                </div>
+                       
+            </div>
+        </div>
+         {{/each}}
+    {{/each}}
+    </div>
+   
+</div>

@@ -1,0 +1,67 @@
+
+<header>
+
+    <div class="main-navbar shadow-sm sticky-top">
+        <div class="top-navbar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-2 my-auto d-none d-sm-none d-md-block d-lg-block">
+                        <h5 class="brand-name">EKart</h5>
+                    </div>
+                    <div class="col-md-5 my-auto">
+                        <form role="search" action="/search"  method="post">
+                            <div class="input-group">
+                                <input type="search" placeholder="Search your product" name="query" class="form-control" />
+                                <button class="btn bg-white" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5 my-auto">
+                        <ul class="nav justify-content-end">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/cart">
+                                {{#if cartCount}}
+                                    <i  class="fa fa-shopping-cart"></i> Cart <span id="cartCount" >{{cartCount}}</span>
+                                    {{/if}}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                </a>
+                            </li>
+                            {{#if user}}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-user"></i> {{user.name}} 
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a></li>
+
+                                <li><a class="dropdown-item" href="/orders"><i class="fa fa-list"></i> My Orders</a></li>
+                                <li><a class="dropdown-item" href="/cart"><i class="fa fa-shopping-cart"></i> My Cart</a></li>
+                                <li><a class="dropdown-item" href="/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                                </ul>
+                            </li>
+                            {{else}}
+                              <a class="nav-link " href="/login"  role="button" >
+                                    <i class="fa fa-user"></i> Login 
+                                </a>
+                                {{/if}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand d-block d-sm-block d-md-none d-lg-none" href="#">
+                    EKart
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    </div>
+</header>

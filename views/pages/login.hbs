@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h2>Login</h2>
+            <form action="/login" method="post" class="form">
+                <label for="email">Email</label>
+                <input type="text" name="email" placeholder="Email" class="form-control">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" class="form-control"><br>
+                <a href="/signup" class="float-right">Create account</a><br>
+                <button type="submit" class="btn btn-success">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if status}}
+<section>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{status}}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       {{status}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        {{!-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{{/if}}

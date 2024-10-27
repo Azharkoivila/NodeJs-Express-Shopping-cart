@@ -1,0 +1,103 @@
+ {{#if userCart}}
+ <div class="py-3 py-md-5 bg-light">
+        <div class="container">
+    
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="shopping-cart">
+
+                        <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Products</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Price</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Quantity</h4>
+                                </div>
+                                <div class="col-md-2">
+                                    <h4>Remove</h4>
+                                </div>
+                            </div>
+                        </div>
+                    {{#each userCart}}
+                        <div class="cart-item">
+                            <div class="row">
+                                <div class="col-md-6 my-auto">
+                                    <a href="">
+                                        <label class="product-name">
+                                            <img src="/images/products/{{this.imgPaths.[0]}}.jpg" style="width: 50px; height: 50px" alt="">
+                                           {{{this.productName}}}
+                                        </label>
+                                    </a>
+                                </div>
+                                <div class="col-md-2 my-auto">
+                                    <label class="price">{{this.productPrice}} </label>
+                                </div>
+                                <div class="col-md-2 col-7 my-auto">
+                                    <div class="quantity">
+                                        <div class="input-group">
+                                            <button onclick="changeCount('{{this.productId}}','dec')" class="btn btn1"><i class="fa fa-minus"></i></button>
+                                            <input id="{{this.productId}}" type="text" disabled value="{{this.count}}" class="input-quantity" />
+                                            <button  onclick="changeCount('{{this.productId}}','inc')" class="btn btn1"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 col-5 my-auto">
+                                    <div class="remove">
+                                        <a href="/removeProduct/{{this.productId}}" class="btn btn-danger btn-sm">
+                                            <i class="fa fa-trash"></i> Remove
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        <hr>
+                        <h3>Grand Total</h3> 
+                        <span> R.S 
+                            <h2 id="total">{{grandTotal}}</h2> 
+                        </span>
+                        
+                        <a href="checkout" type="button" class="btn btn-success float-end ">CheckOut</a>                     
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{else}}
+ <h1>Your Cart Is Empty</h1>
+ {{/if}}
+
+
+
+ {{#if status}}
+<section>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">{{status}}</h1>
+         {{#if message}}
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         {{/if}}
+      </div>
+      <div class="modal-body">
+       {{status}}
+      </div>
+      <div class="modal-footer">
+         {{#if message}}
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="/oders" type="button" class="btn btn-primary">Go To Your Orders </a>
+        {{else}}
+           <a href="/" type="button" class="btn btn-primary">Add product</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{{/if}}

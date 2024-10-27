@@ -4,26 +4,34 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const exphbs = require("express-handlebars");
-
+const fileUpload=require("express-fileupload")
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+var adminRouter = require('./routes/admin');
+var session = require("express-session");
 var dbconfig=require('./config/connection')
 
 var app = express();
+
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    cookie: {maxAge:600000000000 },
+  })
+);
+
 
 // view engine setup
 const hbs = exphbs.create({
   defaultLayout: path.join(__dirname, "views/layout/layout"),
   partialsDir: path.join(__dirname, "views/partials/"),
-  extname: ".hbs", 
+  extname: ".hbs",
+  helpers: require('./helpers/hbs-custom-helpers')
 });
 
 app.engine("hbs", hbs.engine);
 app.set("views", path.join(__dirname, "views/pages"));
 app.set("view engine", "hbs");
-
-
 
 
 
@@ -39,9 +47,9 @@ app.use("/stylesheets",express.static(__dirname+"/public"));
 dbconfig.connect()
 
 
-
+app.use(fileUpload());
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use("/admin", adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -56,7 +64,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('users/error');
+  res.render("error",{errstatus:true});
 });
 
 module.exports = app;
