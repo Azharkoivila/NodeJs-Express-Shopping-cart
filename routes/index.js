@@ -58,12 +58,14 @@ router.post("/login", (req, res) => {
       req.session.user = result.user;
       req.session.LoginStatus = "Login Success";
       res.redirect("/");
-    } else if (result.status == "Enter Valid Password") {
-      res.render("login", { admin: false, status: result.status });
-    } else if (result.status == "Enter Valid Email") {
-      res.render("login", { admin: false, status: result.status });
+    } 
+  }).catch((err) => {
+    if (err.status == "Enter Valid Password") {
+      res.render("login", { admin: false, status: err.status });
+    } else if (err.status == "Enter Valid Email") {
+      res.render("login", { admin: false, status: err.status });
     }
-  });
+  } );
 });
 
 router.post("/signup", (req, res) => {

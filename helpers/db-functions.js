@@ -54,12 +54,12 @@ module.exports = {
             if (result) {
               resolve({ user, status: "Login Success" });
             } else {
-              resolve({ status: "Enter Valid Password" });
+              reject({ status: "Enter Valid Password" });
             }
           }
         );
       } else {
-        resolve({ status: "Enter Valid Email" });
+        reject({ status: "Enter Valid Email" });
       }
     });
   },
@@ -400,12 +400,12 @@ module.exports = {
              if (result) {
                resolve({ admin, status: "Login Success" });
              } else {
-               resolve({ status: "Enter Valid Password" });
+               reject({ status: "Enter Valid Password" });
              }
            }
          );
        } else {
-         resolve({ status: "Enter Valid Email" });
+         reject({ status: "Enter Valid Email" });
        }
      });
   },getAllorders(){

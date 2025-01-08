@@ -37,7 +37,9 @@ router.post("/login", (req, res) => {
       req.session.admin = result.admin;
       res.redirect('/admin')
     }
-  })
+  }).catch((err)=>{ 
+    res.render('adminLogin',{status:err.status});
+  } )
 });
 
 router.get("/logout",(req,res)=>{
@@ -133,6 +135,10 @@ router.get("/orders", isAdminExist,(req, res) => {
     });
 });
 
+
+router.get("/login", (req, res) => {
+res.redirect('/admin')
+});
 
 
 
