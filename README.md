@@ -1,7 +1,12 @@
 # ShoppingCart - HandleBars + Node.js + Express + MongoDB
 
 
-Developing a **ShoppingCart (Ecommerce) Application using NodeJs**
+## ⚠️ Important Note
+
+This is a **study-based project** developed to explore and understand **Node.js, Express, and JavaScript,MongoDb fundamentals**.
+
+The code is **not intended for production use** and should be treated as an experimental/learning implementation.
+
 
 ## Functionalitites
 1. User Registeration and Authentication
